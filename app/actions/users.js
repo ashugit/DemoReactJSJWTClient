@@ -155,3 +155,32 @@ export function deleteUser(id) {
 }
 
 
+/**
+ * 
+ * @param {*} id 
+ */
+function createdUserUpdate(user) {
+    return {
+        type: types.USERS_CREATED_USER,
+        user: user
+    };
+}
+/**
+ *  @param {*} id
+ */
+export function createdUser(user) {
+    return (dispatch) => {
+        dispatch(createdUserUpdate(user));
+        dispatch(push('/dashboard/users'));
+    };    
+}
+
+
+/**
+ *  @param {*} id
+ */
+export function loadCreateUser() {
+    return (dispatch) => {
+        dispatch(push('/dashboard/create/new'));
+    };    
+}

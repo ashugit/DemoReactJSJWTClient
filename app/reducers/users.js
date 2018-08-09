@@ -152,6 +152,11 @@ const users = (state = getInitialState(), action) => {
             filter(newState);
             sort(newState);
             return newState;
+        case types.USERS_CREATED_USER:
+            newState.users.push(action.user);
+            filter(newState);
+            sort(newState);
+            return newState;
     }
     return state; // ignore
 };

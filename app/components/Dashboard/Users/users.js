@@ -8,7 +8,8 @@ import { loadUsers,
          moveToPage,
          updatePerPageCount,
          updateFilter,
-         editUser } from '../../../actions/users';
+         editUser,
+         loadCreateUser } from '../../../actions/users';
 
 import DemoTable from './table/demo-table';
 
@@ -58,6 +59,10 @@ class Users extends React.Component {
         ];
     }
 
+    onAddNewUser() {
+        this.props.loadCreateUser();
+    }
+
     onReportSort(field) {
         this.props.applySort(field);
     }
@@ -82,6 +87,7 @@ class Users extends React.Component {
         return (<div>
             <div className="container">
                 <h1>List of users</h1>
+                <a onClick={()=>this.onAddNewUser()} className="btn btn-default btn-sm"> + Add New User</a>
                 <DemoTable
                     headers = {this.headers}
                     data = {this.props.users.displayables}
@@ -107,6 +113,7 @@ Users.propTypes = {
     moveToPage: PropTypes.func.isRequired,
     updateFilter: PropTypes.func.isRequired,
     editUser: PropTypes.func.isRequired,
+    loadCreateUser: PropTypes.func.isRequired,
     users: PropTypes.object.isRequired
 };
 
@@ -123,7 +130,8 @@ const mapDispatchToProps = (dispatch) => {
         moveToPage: (page) => {dispatch(moveToPage(page));},
         updatePerPageCount: (count) => {dispatch(updatePerPageCount(count));},
         updateFilter: (filter) => {dispatch(updateFilter(filter));},
-        editUser: (id) => {dispatch(editUser(id));}
+        editUser: (id) => {dispatch(editUser(id));},
+        loadCreateUser: () => {dispatch(loadCreateUser());}
     };
 };
 

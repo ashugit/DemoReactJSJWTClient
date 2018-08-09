@@ -101,7 +101,7 @@ class DemoService {
      */
     createUser(email, name) {
         const params = {email: email, name: name};
-        return axios.post(Urls.BASE + '/users.json', { headers: this.getBearerHeader() });
+        return axios.post(Urls.BASE + '/users.json', params, { headers: this.getBearerHeader() });
     }
 
     /**
