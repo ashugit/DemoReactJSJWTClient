@@ -3,6 +3,7 @@ import React from 'react';
 import EntryTh from './entry-th';
 import EntryTr from './entry-tr';
 import Paginator from './paginator';
+import Filter from './filter';
 
 const DemoTable = ({ headers, 
                     data, 
@@ -16,7 +17,13 @@ const DemoTable = ({ headers,
                     onReportPageChange,
                     onReportShowPerPageChange, 
                     onReportClick}) =>{
-    return (<div className="table-responsive">
+    return (
+        
+            <div className="table-responsive">
+                <Filter filterables={headers} 
+                        filter={filter}
+                        onReportFilter={onReportFilter}/>
+                <br/>
                 <table className="table table-bordered">
                         <thead>
                             <tr>

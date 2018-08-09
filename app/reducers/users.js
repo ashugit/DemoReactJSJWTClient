@@ -131,8 +131,15 @@ const users = (state = getInitialState(), action) => {
             }
             newState.page = 1;
             return newState;
+        case types.USERS_UPDATE_FILTER:
+            newState.filter.filterOn = action.filter.filterOn;
+            newState.filter.filterString = action.filter.filterString;
+            newState.page = 1;
+            filter(newState);
+            sort(newState);
+            return newState;
     }
-    return state;
+    return state; // ignore
 };
 
 export default users;

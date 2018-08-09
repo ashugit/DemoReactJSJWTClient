@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import { loadUsers, 
          applySort,
          moveToPage,
-         updatePerPageCount } from '../../../actions/users';
+         updatePerPageCount,
+         updateFilter } from '../../../actions/users';
 
 import DemoTable from './table/demo-table';
 
@@ -61,7 +62,7 @@ class Users extends React.Component {
     }
 
     onReportFilter(filter) {
-        console.log('filter');
+        this.props.updateFilter(filter);
     }
 
     onReportPageChange(page) {
@@ -103,6 +104,7 @@ Users.propTypes = {
     applySort: PropTypes.func.isRequired,
     updatePerPageCount: PropTypes.func.isRequired,
     moveToPage: PropTypes.func.isRequired,
+    updateFilter: PropTypes.func.isRequired,
     users: PropTypes.object.isRequired
 };
 
@@ -118,6 +120,7 @@ const mapDispatchToProps = (dispatch) => {
         applySort: (field) => {dispatch(applySort(field));},
         moveToPage: (page) => {dispatch(moveToPage(page));},
         updatePerPageCount: (count) => {dispatch(updatePerPageCount(count));},
+        updateFilter: (filter) => {dispatch(updateFilter(filter));}
     };
 };
 

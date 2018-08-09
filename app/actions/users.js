@@ -89,3 +89,17 @@ export function moveToPage(page) {
         page: page
     };
 }
+
+
+/**
+ * 
+ * @param {*} filter 
+ */
+export function updateFilter(filter) {
+    return {
+        type: types.USERS_UPDATE_FILTER,
+        filter: filter
+    };
+}
+
+
