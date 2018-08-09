@@ -1,0 +1,67 @@
+.session {
+    display: block;
+
+    background-image: url("https://source.unsplash.com/1600x900/?nature");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .sessionForm{
+        background-color:rgba(255, 255, 255, 0.85);
+        border-radius: 10px;
+        
+    }
+
+    button{
+        width: 200px;
+        text-align: center;
+        .busy{
+            margin: auto;
+        }
+    }
+    .show{
+        display: inline;
+    }
+    .hidden{
+        display: none;
+    }
+   
+}
+
+
+.dashboard{
+
+    .btn{
+        width: 200px;
+    }
+    table{
+        border-radius: 5px;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    table tr td{
+        cursor: pointer;
+    }
+
+    table thead span{
+        cursor: 'pointer';
+        color: 'blue';
+    }
+
+    table a{
+        cursor: pointer;
+    }
+
+    
+       
+}
+
+.logoutBtn{
+    margin-top: 10px;
+    float: right;
+}
+
