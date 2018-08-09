@@ -138,6 +138,20 @@ const users = (state = getInitialState(), action) => {
             filter(newState);
             sort(newState);
             return newState;
+        case types.USERS_DELETE_USER:
+            const deleteid = action.id;
+            const index = newState.users.findIndex(u => u.id === deleteid);
+            newState.users.splice(index, 1);
+            filter(newState);
+            sort(newState);
+            return newState;
+        case types.USERS_UPDATE_USER:
+            const updateid = action.id;
+            const updateIndex = newState.users.findIndex(u => u.id === updateid);
+            newState.users[updateIndex].name = action.name;
+            filter(newState);
+            sort(newState);
+            return newState;
     }
     return state; // ignore
 };

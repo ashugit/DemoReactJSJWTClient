@@ -1,7 +1,6 @@
 import * as types from './types';
 import { DemoService }  from '../services/demo';
-
-
+import {push} from 'react-router-redux';
 /**
  * 
  */
@@ -100,6 +99,59 @@ export function updateFilter(filter) {
         type: types.USERS_UPDATE_FILTER,
         filter: filter
     };
+}
+
+
+/**
+ * 
+ * @param {*} id 
+ */
+export function editUser(id) {
+    return (dispatch) => {
+        dispatch(push('/dashboard/users/' + id));
+    };    
+}
+
+/**
+ * 
+ * @param {*} id 
+ * @param {*} name 
+ */
+function updateUserUpdate(id, name) {
+    return {
+        type: types.USERS_UPDATE_USER,
+        id: id,
+        name: name
+    };
+}
+/**
+ * 
+ * @param {*} id 
+ */
+function deleteUserUpdate(id) {
+    return {
+        type: types.USERS_DELETE_USER,
+        id: id
+    };
+}
+/**
+ *  @param {*} id
+ */
+export function updateUser(id, name) {
+    return (dispatch) => {
+        dispatch(updateUserUpdate(id, name));
+        dispatch(push('/dashboard/users'));
+    };    
+}
+
+/**
+ *  @param {*} id
+ */
+export function deleteUser(id) {
+    return (dispatch) => {
+        dispatch(deleteUserUpdate(id));
+        dispatch(push('/dashboard/users'));
+    };    
 }
 
 

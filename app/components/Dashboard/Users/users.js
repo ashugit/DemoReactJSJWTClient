@@ -7,7 +7,8 @@ import { loadUsers,
          applySort,
          moveToPage,
          updatePerPageCount,
-         updateFilter } from '../../../actions/users';
+         updateFilter,
+         editUser } from '../../../actions/users';
 
 import DemoTable from './table/demo-table';
 
@@ -74,7 +75,7 @@ class Users extends React.Component {
     }
 
     onReportClick(id) {
-        console.log('open');
+        this.props.editUser(id);
     }
 
     render() {
@@ -105,6 +106,7 @@ Users.propTypes = {
     updatePerPageCount: PropTypes.func.isRequired,
     moveToPage: PropTypes.func.isRequired,
     updateFilter: PropTypes.func.isRequired,
+    editUser: PropTypes.func.isRequired,
     users: PropTypes.object.isRequired
 };
 
@@ -120,7 +122,8 @@ const mapDispatchToProps = (dispatch) => {
         applySort: (field) => {dispatch(applySort(field));},
         moveToPage: (page) => {dispatch(moveToPage(page));},
         updatePerPageCount: (count) => {dispatch(updatePerPageCount(count));},
-        updateFilter: (filter) => {dispatch(updateFilter(filter));}
+        updateFilter: (filter) => {dispatch(updateFilter(filter));},
+        editUser: (id) => {dispatch(editUser(id));}
     };
 };
 

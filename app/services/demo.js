@@ -90,8 +90,8 @@ class DemoService {
      * @param {*} name (string)
      */
     updateUser(id, name) {
-        const params = {id: id, name: name};
-        return axios.put(Urls.BASE + '/users.json', this.getBearerHeader());
+        const params = {name: name};
+        return axios.put(Urls.BASE + '/users/' + id + '.json', params, { headers: this.getBearerHeader() });
     }
 
     /**
@@ -101,7 +101,7 @@ class DemoService {
      */
     createUser(email, name) {
         const params = {email: email, name: name};
-        return axios.post(Urls.BASE + '/users.json', this.getBearerHeader());
+        return axios.post(Urls.BASE + '/users.json', { headers: this.getBearerHeader() });
     }
 
     /**
@@ -109,7 +109,7 @@ class DemoService {
      * @param {*} id (string)
      */
     deleteUser(id) {
-        return axios.delete(Urls.BASE + '/users/' + id + '.json', this.getBearerHeader());
+        return axios.delete(Urls.BASE + '/users/' + id + '.json',  { headers: this.getBearerHeader() });
     }
 
 }

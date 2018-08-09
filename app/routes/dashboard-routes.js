@@ -1,7 +1,8 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import Users from '../components/Dashboard/Users';
+import Users from '../components/Dashboard/Users/users';
+import User from '../components/Dashboard/Users/user';
 import Home from '../components/Dashboard/Home';
 
 const DashboardRoutes = (isAdmin)=>{
@@ -26,12 +27,20 @@ const DashboardRoutes = (isAdmin)=>{
                 <Route exact path="/dashboard/home"
                     render={() => (
                         isAdmin ? (
-                            <Redirect to="/dashboard/home"/>
+                            <Redirect to="/dashboard/users"/>
                         ) : (
                             <Home/>
                         )
-                    )}/>
- 
+                    )}/> 
+
+                    <Route exact path="/dashboard/users/:id"
+                    render={() => (
+                        isAdmin ? (
+                            <User/>
+                        ) : (
+                            <Redirect to="/dashboard/home"/>
+                        )
+                    )}/> 
 	    </Switch>);
 };
 
